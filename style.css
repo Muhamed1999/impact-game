@@ -1,75 +1,228 @@
-*{
-    padding: 0;
+/* إعادة تعيين القيم الإفتراضية */
+* {
     margin: 0;
-}
-
-body {
-font-family: Arial, sans-serif;
-margin: 0;
-padding: 0;
-background-color: #f2f2f2;
-}
-
-.adriss{
-    height: fit-content;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+  
+  /* رأس الصفحة */
+  .adriss {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #2196f3;
     color: white;
     padding: 20px;
-    text-align: center;
     font-size: 28px;
-}
-
-.title{
+  }
+  
+  .title {
     padding: 20px;
-    color: blue;
-}
+    color: white;
+  }
+  
+  /* محرك البحث */
+  .search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  .search .ss {
+    width: 80%;
+    max-width: 700px;
+    height: 3rem;
+    border-radius: 20px;
+    border: dashed 3px white;
+    font-size: 24px;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  .search .ss:focus {
+    border-color: #2196f3;
 
-.continer_games{
+    box-shadow: 0 0 5px #2196f3;
+  }
+  
+  .search i {
+    margin: 0 10px;
+    font-size: 2rem;
+    transition: 0.3s ease;
+  }
+  
+  .search i:hover {
+    font-size: 2.5rem;
+  }
+  
+  /* حاوية الألعاب */
+  .continer_games {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    
-}
+    padding: 20px;
+  }
+  
+  /* كل لعبة */
+  .game {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+    max-width: 300px;
+    transition: transform 0.3s ease;
+    animation: fadeIn 0.5s ease-in-out;
+    justify-content: space-between;
+  }
+  
 
 
-.game {
-background-color: white;
-padding: 10px;
-border-radius: 10px;
-box-shadow: 0 0 10px rgba(0,0,0,0.1);
-display: flex;
-flex-direction: column;
-align-items: center;
-margin: 15px;
-justify-content: space-between;
 
-}
-.game-title {
-font-weight: bold;
-margin: 10px 0;
-text-align: center;
-}
-.play-button {
-background-color: #4caf50;
-color: white;
-border: none;
-padding: 10px 20px;
-border-radius: 5px;
-cursor: pointer;
-font-size: 16px;
-margin-top: 10px;
 
+
+
+  .game:hover {
+    transform: scale(1.03);
+  }
+  
+  .game-title {
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center;
+  }
+  
+  .play-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
 }
+
 .play-button:hover {
-background-color: #45a049;
-}
-.game-image {
-width: 100%;
-max-width: 300px;
-border-radius: 10px;
-margin-bottom: 10px;
+    background-color: #45a049;
 }
 
+.game-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+  /* Animation */
+@keyframes fadeIn {
+    from {
+    opacity: 0;
+    transform: translateY(20px);
+    }
+    to {
+    opacity: 1;
+    transform: translateY(0);
+    }
+}
+
+  /* Responsive */
+@media (max-width: 768px) {
+    .game {
+    max-width: 90%;
+    }
+
+    .search .ss {
+    width: 90%;
+    font-size: 20px;
+    }
+
+    .title {
+    font-size: 22px;
+    text-align: center;
+    }
+
+    .adriss {
+    font-size: 24px;
+    padding: 15px;
+    }
+}
+
+
+
+@media (prefers-color-scheme: dark) {
+    body {
+      background-color: #121212;
+      color: #ffffff;
+    }
+  
+    .adriss {
+      background-color: #1e1e1e;
+      color: #ffffff;
+    }
+  
+    .game {
+      background-color: #1f1f1f;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+  
+    .play-button {
+      background-color: #64dd17;
+      color: #000;
+    }
+  
+    .play-button:hover {
+      background-color: #76ff03;
+    }
+  
+    .search .ss {
+      background-color: #2b2b2b;
+      color: #fff;
+      border: dashed 3px #ffffff;
+    }
+  
+    .game-title {
+      color: #eeeeee;
+    }
+  }
+  
+
+
+
+  .counter-box {
+    text-align: center;
+    font-size: 26px;
+    color: #2196f3;
+    font-weight: bold;
+    margin-top: 15px;
+    animation: fadeIn 1s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.counter-box span {
+    transition: all 0.4s ease-in-out;
+}

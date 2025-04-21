@@ -1,15 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+
+<script>
+  // إعدادات Firebase
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_DOMAIN.firebaseapp.com",
+    databaseURL: "https://YOUR_DOMAIN.firebaseio.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "SENDER_ID",
+    appId: "APP_ID"
+  };
+
+  // تهيئة Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
+  // تسجيل المستخدم عند الدخول
+  const userRef = db.ref("users/" + Date.now());
+  userRef.set(true);
+  userRef.onDisconnect().remove(); // يشيل المستخدم لما يخرج
+
+  // تحديث الرقم لايف
+  const counterRef = db.ref("users");
+  counterRef.on("value", (snapshot) => {
+    const count = snapshot.numChildren();
+    document.getElementById("liveCounter").innerText = `المستخدمين المتصلين: ${count}`;
+  });
+</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png">
     <title>Impact Game</title>
 </head>
 <body>
     <header class="adriss">
         <h1 class="title">Impact Game</h1>
     </header>
+<!-- إضافة محرك البحث -->
+<div class="search" >
+    <input class="ss" type="search" placeholder="Name of the Game" id="searchInput" onkeyup="searchProducts()">
+    <!-- <a href="#"></a> -->
+</div>
+
+<div id="liveCounter" style="text-align: center; font-size: 20px; margin-top: 10px;"></div>
+
+
+<!-- عداد وهمي أعلى الصفحة -->
+<div id="fakeCounter" class="counter-box">
+    عدد اللاعبين الآن: <span id="fakeNumber">500</span>
+</div>
+
+
 
 <div class="continer_games">
 
@@ -26,9 +75,16 @@
             <a href="http://slither.com/io" target="_blank"><button class="play-button">ابدأ اللعب</button></a>
         </div>
     
+        <div class="game">
+            <div class="game-title"> لودو كينج (Lodo King)</div>
+            <!-- صورة اللعبة -->
+            <img src="lodo.png" alt="لعبة الدودة" class="game-image" />
+            <a href="https://ar.crazygames.com/game/ludo-king" target="_blank"><button class="play-button">ابدأ اللعب</button></a>
+        </div>
+    
         <!-- لعبة المحارب -->
         <div class="game">
-            <div class="game-title"> المحارب(Autogun Heroes)</div>
+            <div class="game-title"> المحارب (Autogun Heroes)</div>
             <!-- صورة اللعبة -->
             <img src="Autogun Heroes.jpg" alt="لعبة الدودة" class="game-image" />
             <a href="https://www.crazygames.com/game/autogun-heroes-izk" target="_blank"><button class="play-button">ابدأ اللعب</button></a>
@@ -39,7 +95,7 @@
             <div class="game-title"> عداد المحارب (count master)</div>
             <!-- صورة اللعبة -->
             <img src="count master.jpg" alt="لعبة الدودة" class="game-image" />
-            <a href="http://slither.com/io" target="_blank"><button class="play-button">ابدأ اللعب</button></a>
+            <a href="https://www.crazygames.com/game/count-masters-stickman-games" target="_blank"><button class="play-button">ابدأ اللعب</button></a>
         </div>
     
         <!-- لعبة سواق الموتوسيكل -->
@@ -117,6 +173,10 @@
     
 
 </div>
+
+<script src="game.js"></script>
+
+
 
 
 </body>
