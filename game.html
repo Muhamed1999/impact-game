@@ -7,7 +7,7 @@
 
 <script>
   // إعدادات Firebase
-  const firebaseConfig = {
+const firebaseConfig = {
     apiKey: "YOUR_API_KEY",
     authDomain: "YOUR_DOMAIN.firebaseapp.com",
     databaseURL: "https://YOUR_DOMAIN.firebaseio.com",
@@ -15,23 +15,23 @@
     storageBucket: "YOUR_PROJECT_ID.appspot.com",
     messagingSenderId: "SENDER_ID",
     appId: "APP_ID"
-  };
+};
 
   // تهيئة Firebase
-  const app = firebase.initializeApp(firebaseConfig);
-  const db = firebase.database();
+const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
 
   // تسجيل المستخدم عند الدخول
-  const userRef = db.ref("users/" + Date.now());
-  userRef.set(true);
+const userRef = db.ref("users/" + Date.now());
+userRef.set(true);
   userRef.onDisconnect().remove(); // يشيل المستخدم لما يخرج
 
   // تحديث الرقم لايف
-  const counterRef = db.ref("users");
-  counterRef.on("value", (snapshot) => {
+const counterRef = db.ref("users");
+counterRef.on("value", (snapshot) => {
     const count = snapshot.numChildren();
     document.getElementById("liveCounter").innerText = `المستخدمين المتصلين: ${count}`;
-  });
+});
 </script>
 
     <meta charset="UTF-8">
@@ -42,6 +42,9 @@
 </head>
 <body>
     <header class="adriss">
+        <div class="ads-top">
+            <a href="https://beta.publishers.adsterra.com/referral/3GiBHYRFrz" target="_blank" rel="nofollow"><img alt="banner" src="banner.gif" /></a>
+        </div>
         <h1 class="title">Impact Game</h1>
     </header>
 <!-- إضافة محرك البحث -->
