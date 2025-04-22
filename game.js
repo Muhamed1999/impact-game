@@ -49,6 +49,6 @@ const counterElement = document.getElementById('fakeNumber');
 
 // كل 3 ثواني غير الرقم بشكل وهمي بين 1500 و 3000
 setInterval(() => {
-    const randomNum = randomIntFromRange(500,9000);
+    const randomNum = randomIntFromRange(372,586);
     counterElement.innerText = randomNum.toLocaleString();
-}, 800);
+}, 3000);
